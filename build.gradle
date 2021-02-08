@@ -1,0 +1,30 @@
+plugins {
+	id 'java'
+	id 'eclipse'
+	id 'idea'
+}
+
+
+version = '1.0.0'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
+
+test {
+	useJUnitPlatform()
+}
+
+dependencies {
+	testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.4.0'
+	testImplementation 'org.hamcrest:hamcrest:2.1'
+	testImplementation 'org.hamcrest:hamcrest-core:2.1'
+	testImplementation 'org.mockito:mockito-core:2.24.0'
+	testImplementation 'com.google.testing.compile:compile-testing:0.18'
+
+	compile 'org.slf4j:slf4j-api:1.7.30'
+	compile 'org.slf4j:slf4j-log4j12:1.7.30'
+	compile 'org.ow2.asm:asm:7.1'
+	compile 'com.github.zafarkhaja:java-semver:0.9.0'
+}
