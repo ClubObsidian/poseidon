@@ -15,6 +15,7 @@
  */
 package org.pf4j;
 
+import com.google.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,20 +35,14 @@ public class Plugin {
     /**
      * Wrapper of the plugin.
      */
-    protected PluginWrapper wrapper;
+    @Inject
+    private PluginWrapper wrapper;
 
     /**
      * Constructor to be used by plugin manager for plugin instantiation.
      * Your plugins have to provide constructor with this exact signature to
      * be successfully loaded by manager.
      */
-    public Plugin(final PluginWrapper wrapper) {
-        if (wrapper == null) {
-            throw new IllegalArgumentException("Wrapper cannot be null");
-        }
-
-        this.wrapper = wrapper;
-    }
 
     /**
      * Retrieves the wrapper of this plug-in.

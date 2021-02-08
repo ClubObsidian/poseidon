@@ -16,7 +16,6 @@
 package org.pf4j;
 
 import org.junit.jupiter.api.Test;
-import org.pf4j.plugin.AnotherFailTestPlugin;
 import org.pf4j.plugin.FailTestPlugin;
 import org.pf4j.plugin.TestPlugin;
 
@@ -67,21 +66,6 @@ public class DefaultPluginFactoryTest {
     public void testCreateFailNotFound() {
         PluginDescriptor pluginDescriptor = mock(PluginDescriptor.class);
         when(pluginDescriptor.getPluginClass()).thenReturn("org.pf4j.plugin.NotFoundTestPlugin");
-
-        PluginWrapper pluginWrapper = mock(PluginWrapper.class);
-        when(pluginWrapper.getDescriptor()).thenReturn(pluginDescriptor);
-        when(pluginWrapper.getPluginClassLoader()).thenReturn(getClass().getClassLoader());
-
-        PluginFactory pluginFactory = new DefaultPluginFactory();
-
-        Plugin plugin = pluginFactory.create(pluginWrapper);
-        assertNull(plugin);
-    }
-
-    @Test
-    public void testCreateFailConstructor() {
-        PluginDescriptor pluginDescriptor = mock(PluginDescriptor.class);
-        when(pluginDescriptor.getPluginClass()).thenReturn(AnotherFailTestPlugin.class.getName());
 
         PluginWrapper pluginWrapper = mock(PluginWrapper.class);
         when(pluginWrapper.getDescriptor()).thenReturn(pluginDescriptor);

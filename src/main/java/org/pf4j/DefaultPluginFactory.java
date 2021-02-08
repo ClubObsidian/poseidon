@@ -15,6 +15,7 @@
  */
 package org.pf4j;
 
+import org.pf4j.inject.PluginModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,8 +61,11 @@ public class DefaultPluginFactory implements PluginFactory {
 
         // create the plugin instance
         try {
-            Constructor<?> constructor = pluginClass.getConstructor(PluginWrapper.class);
-            return (Plugin) constructor.newInstance(pluginWrapper);
+            Constructor<?> constructor = pluginClass.getConstructor();
+            Plugin plugin = (Plugin) constructor.newInstance();
+            PluginModule module = new PluginModule(pluginWrapper, plugin);
+            module.inject();
+            return plugin;
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
