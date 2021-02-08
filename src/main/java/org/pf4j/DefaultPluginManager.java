@@ -48,8 +48,9 @@ public class DefaultPluginManager extends AbstractPluginManager {
     @Override
     protected PluginDescriptorFinder createPluginDescriptorFinder() {
         return new CompoundPluginDescriptorFinder()
-            .add(new PropertiesPluginDescriptorFinder())
-            .add(new ManifestPluginDescriptorFinder());
+                .add(new PropertiesPluginDescriptorFinder())
+                .add(new ManifestPluginDescriptorFinder())
+                .add(new YamlPluginDescriptorFinder());
     }
 
     @Override
